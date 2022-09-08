@@ -28,7 +28,7 @@ void SortArray(int[,] array)//обмен строк массива со стол
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
-        for (int j = 0; j < array.GetLength(1); j++)
+        for (int j = i; j < array.GetLength(1); j++)
         {
             int res = array[i,j];
             array[i,j] = array [j,i];
@@ -51,10 +51,17 @@ while (!int.TryParse(Console.ReadLine(), out y))//проверка что вво
 
 int[,] matrix = new int[x, y];
 FillArray(matrix);
+Console.WriteLine("Матрица с случайно сгенерированными элементами");
 PrintArray(matrix);
 Console.WriteLine();
+if (matrix.GetLength(0) != matrix.GetLength(1))
+{
+Console.WriteLine("Матрица не квадратная и поменять столбцы на строки не возможно!");
+}
+else
+{
 SortArray(matrix);
 PrintArray(matrix);
-
+}
 
 
